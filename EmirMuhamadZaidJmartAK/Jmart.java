@@ -9,27 +9,45 @@ package EmirMuhamadZaidJmartAK;
  */
 public class Jmart
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Jmart
-     */
-    public Jmart()
-    {
-        // initialise instance variables
-        x = 0;
+    static int getPromo() {
+        System.out.println("I just got executed!");
+        return 0;
+    }
+   
+    static String getCustomer() {
+        
+        System.out.println("I just got executed!");
+        return "OOP";
+    }
+    
+    static float getDiscountPercentage(int before, int after) {
+        if(before>after){
+            before = before-after;
+            before = before/100;
+        }else{
+            before = 0;
+        }
+        System.out.println("I just got executed!");
+        return before;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    static void getDiscountedPrice() {
+        System.out.println("I just got executed!");
+    }
+
+    static void getOriginalPrice() {
+        System.out.println("I just got executed!");
+    }
+     
+    static void getCommissionMultiplier() {
+        System.out.println("I just got executed!");
+    }
+    
+    static void getAdjustedPrice() {
+        System.out.println("I just got executed!");
+    }
+
+    static void getAdminFee() {
+        System.out.println("I just got executed!");
     }
 }
