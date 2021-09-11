@@ -2,11 +2,11 @@
 comment0.target=Jmart
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Jmart\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
-comment1.target=void\ getPromo()
+comment1.target=int\ getPromo()
 comment2.params=
-comment2.target=void\ getCustomer()
-comment3.params=
-comment3.target=void\ getDiscountPercentage()
+comment2.target=java.lang.String\ getCustomer()
+comment3.params=before\ after
+comment3.target=float\ getDiscountPercentage(int,\ int)
 comment4.params=
 comment4.target=void\ getDiscountedPrice()
 comment5.params=
