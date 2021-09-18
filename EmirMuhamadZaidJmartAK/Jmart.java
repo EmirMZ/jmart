@@ -14,18 +14,18 @@ public class Jmart
     public static void main(String[] args) {
     }
     
-    static int getPromo() {
+    public static int getPromo() {
        
         return 0;
     }
    
-    static String getCustomer() {
+    public static String getCustomer() {
         
 
         return "oop";
     }
     
-    static float getDiscountPercentage(int before, int after) {
+    public static float getDiscountPercentage(int before, int after) {
         float discount;
         if(before>after){
             discount = (float)(((float)(before)-(float)after)/(float)before);
@@ -40,7 +40,7 @@ public class Jmart
         return discount;
     }
 
-    static int getDiscountedPrice(int price, float discountPercentage) {
+    public static int getDiscountedPrice(int price, float discountPercentage) {
         float floatPrice;
         int finalPrice;
         
@@ -51,23 +51,23 @@ public class Jmart
         return (int)((float)(price)-((float)price)*((float)discountPercentage/100.0f));
      }
 
-    static int getOriginalPrice(int discountedPrice, float discountPercentage) {
+    public static int getOriginalPrice(int discountedPrice, float discountPercentage) {
         if (discountPercentage > 100.0f){
             discountPercentage = 100.0f;
         }
         return (int)((float)(discountedPrice * 100.0f)/(100.0f-(float)discountPercentage));
     }
      
-    static float getCommissionMultiplier() {
+    public static float getCommissionMultiplier() {
         return 0.05f;
     }
     
-    static int getAdjustedPrice(int price) {
+    public static int getAdjustedPrice(int price) {
         price = (int)((float)(getCommissionMultiplier() * price) + (float)price);
         return price;
     }
 
-    static int getAdminFee(int price) {
+    public static int getAdminFee(int price) {
         price = (int)((float)(getCommissionMultiplier() * price));
         return price;
     }
