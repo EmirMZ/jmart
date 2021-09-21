@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Coupon
+comment1.params=name\ code\ type\ cut\ minimum
+comment1.target=Coupon(java.lang.String,\ int,\ Type,\ double,\ double)
+comment2.params=
+comment2.target=boolean\ isUsed()
+comment3.params=priceTag
+comment3.target=boolean\ canApply(PriceTag)
+comment4.params=priceTag
+comment4.target=double\ apply(PriceTag)
+numComments=5
