@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Recognizable
+comment1.params=id
+comment1.target=Recognizable(int)
+comment2.params=recognizable
+comment2.target=boolean\ equals(java.lang.Object)
+comment3.params=recognizable
+comment3.target=boolean\ equals(Recognizable)
+numComments=4

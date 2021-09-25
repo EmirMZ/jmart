@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Account
+comment1.params=id\ name\ email\ password
+comment1.target=Account(int,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=content
+comment2.target=boolean\ read(java.lang.String)
+numComments=3
