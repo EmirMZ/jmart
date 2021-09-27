@@ -1,6 +1,6 @@
 package EmirMuhamadZaidJmartAK;
 
-public class Product extends Recognizable implements FileParser
+public class Product extends Recognizable implements FileParser 
 {
     public String content;
     public String name;
