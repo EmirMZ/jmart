@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.target=Shipment
+comment1.params=content
+comment1.target=boolean\ read(java.lang.String)
+numComments=2

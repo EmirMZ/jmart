@@ -1,14 +1,8 @@
 package EmirMuhamadZaidJmartAK;
 
-
-/**
- * Write a description of class Product here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Product
+public class Product extends Recognizable implements FileParser
 {
+    public String content;
     public String name;
     public int weight ;
     public boolean conditionUsed;
@@ -16,8 +10,10 @@ public class Product
     public ProductCategory category;
     public ProductRating rating;
     public int storeid;
+    public Shipment.MultiDuration multiDuration;
     
-    Product(String name, int weight, boolean conditionUsed,PriceTag priceTag, ProductCategory category, ProductRating rating, int id){
+    public Product(int id, int storeId, String name, int weight, boolean conditionUsed, PriceTag priceTag, ProductCategory category, Shipment.MultiDuration multiDuration){
+        super(id);
         this.name = name  ;
         this.weight = weight;
         this.conditionUsed = conditionUsed;
@@ -27,6 +23,12 @@ public class Product
         this.storeid = id;
     }
     
+    @Override
+    public boolean read (String content){
+        return false;
+    }
     
-    
+    public String toString(){
+        return this.name + this.weight + this.conditionUsed + this.priceTag + this.category + this.rating + this.storeid;
+    }
 }
