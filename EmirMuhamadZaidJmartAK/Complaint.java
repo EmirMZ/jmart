@@ -1,16 +1,11 @@
 package EmirMuhamadZaidJmartAK;
-import javafx.scene.Parent;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-
-/**
- * Write a description of class Complaint here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Complaint extends Recognizable implements FileParser
 {
-    public String date;
+    public Calendar date;
     public String desc;
     
     public Complaint (int id, String desc){
@@ -18,16 +13,10 @@ public class Complaint extends Recognizable implements FileParser
         this.desc =desc;
     }
     
-    public boolean validate(){
-        return false;
-    }
-    
-    public Transactor perform(){
-        return null;
-    }
     
     @Override
     public boolean read(String content){
         return false;
     }
 }
+  

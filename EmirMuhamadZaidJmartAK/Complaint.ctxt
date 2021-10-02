@@ -1,12 +1,7 @@
 #BlueJ class context
 comment0.target=Complaint
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Complaint\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=id\ desc
 comment1.target=Complaint(int,\ java.lang.String)
-comment2.params=
-comment2.target=boolean\ validate()
-comment3.params=
-comment3.target=Transactor\ perform()
-comment4.params=content
-comment4.target=boolean\ read(java.lang.String)
-numComments=5
+comment2.params=content
+comment2.target=boolean\ read(java.lang.String)
+numComments=3

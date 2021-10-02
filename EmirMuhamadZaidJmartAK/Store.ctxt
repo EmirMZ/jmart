@@ -6,4 +6,6 @@ comment2.params=account\ name\ address\ phoneNumber
 comment2.target=Store(Account,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment3.params=content
 comment3.target=boolean\ read(java.lang.String)
-numComments=4
+comment4.params=name\ phoneNumber
+comment4.target=boolean\ validate(java.lang.String,\ java.lang.String)
+numComments=5
