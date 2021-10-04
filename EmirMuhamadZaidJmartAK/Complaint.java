@@ -13,6 +13,13 @@ public class Complaint extends Recognizable implements FileParser
         this.desc =desc;
     }
     
+    public String toString(){
+        SimpleDateFormat SDtemplate = new SimpleDateFormat("dd/MM/yyyy");
+        
+        String tanggal = SDtemplate.format(this.date);
+        
+        return "{date = " + tanggal + "desc = '" + this.desc + "'}"; 
+    }
     
     @Override
     public boolean read(String content){

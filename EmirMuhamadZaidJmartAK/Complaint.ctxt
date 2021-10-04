@@ -2,6 +2,8 @@
 comment0.target=Complaint
 comment1.params=id\ desc
 comment1.target=Complaint(int,\ java.lang.String)
-comment2.params=content
-comment2.target=boolean\ read(java.lang.String)
-numComments=3
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=content
+comment3.target=boolean\ read(java.lang.String)
+numComments=4
