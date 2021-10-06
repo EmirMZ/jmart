@@ -1,7 +1,0 @@
-#BlueJ class context
-comment0.target=Invoice
-comment1.params=id\ buyerId\ productId
-comment1.target=Invoice(int,\ int,\ int)
-comment2.params=content
-comment2.target=boolean\ read(java.lang.String)
-numComments=3
