@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Shipment
+comment1.params=reference
+comment1.target=java.lang.String\ getEstimatedArrival(java.util.Date)
+comment2.params=content
+comment2.target=boolean\ read(java.lang.String)
+numComments=3
