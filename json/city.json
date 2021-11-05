@@ -1,0 +1,9 @@
+{
+  "name": "Indonesia",
+  "population": 1000000,
+  "listOfStates": [
+    "Bandung",
+    "Bali",
+    "Jakarta"
+  ]
+}

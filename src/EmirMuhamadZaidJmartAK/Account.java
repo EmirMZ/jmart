@@ -3,19 +3,21 @@ package EmirMuhamadZaidJmartAK;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Account extends Recognizable implements FileParser
+public class Account extends Recognizable //implements FileParser
 {
     public static final String REGEX_EMAIL = "^\\w+([.&`~-]?\\w+)*@\\w+([.-]?\\w+)+$";
     public static final String REGEX_PASSWORD = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d][^-\\s]{8,}$";
+    public double balance;
+    public Store store;
     public String name;
     public String email;
     public String password;
     
-    public Account (int id,String name, String email, String password){
-        super(id);
+    public Account (String name, String email, String password, double balance){
         this.name = name;
         this.email = email;
         this.password = password;
+        this.balance =balance;
     }
    
     
@@ -35,8 +37,8 @@ public class Account extends Recognizable implements FileParser
     
     
     
-    @Override
-    public boolean read (String content){
-        return false;
-    }
+    //@Override
+    //public boolean read (String content){
+    //    return false;
+    //}
 }

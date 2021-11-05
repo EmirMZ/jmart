@@ -4,36 +4,55 @@ import java.util.Date;
 import java.util.ArrayList;
 
 
-public abstract class Invoice extends Recognizable implements FileParser
+public abstract class Invoice extends Recognizable //implements FileParser
 {
-    public String date;
+    public Date date;
     public int buyerId;
     public int productId;
     public int complaintId;
     public static Rating rating;
     public static Status status;
     public ArrayList<Record> history = new ArrayList<Record>();
-    
-    
-    protected Invoice (int id, int buyerId, int productId){
-        super(id);
-        this.buyerId = buyerId;
-        this.productId = productId;
-        this.rating = Rating.NONE;
-        this.date = "tolong";
-        this.rating = Rating.NONE;
-        this.status = Status.WAITING_CONFIRMATION;
+
+    public enum Status {
+        WAITING_CONFIRMATION,
+        CANCELLED,
+        ON_PROGRES,
+        ON_DELIVERY,
+        COMPLAYINT,
+        FINISHED,
+        FAILED
     }
 
+    public enum Rating{
+        NONE,
+        BAD,
+        NEUTRAL,
+        GOOD
+    }
+
+    protected Invoice (int id, int buyerId, int productId){
+        //super(id);
+        this.buyerId = buyerId;
+        this.productId = productId;
+        this.complaintId = -1;
+        //this.rating = Rating.NONE;
+        this.date = new Date();
+        //this.rating = Rating.NONE;
+        System.out.println(date.toString());
+        status = Status.WAITING_CONFIRMATION;
+    }
+
+    public abstract double getTotalPay();
     
     public class Record {
-        public String message;
         public Status status;
         public Date date;
+        public String message;
     }
     
-    @Override
-    public boolean read (String content){
-        return false;
-    }
+   // @Override
+    //public boolean read (String content){
+      //  return false;
+    //}
 }
