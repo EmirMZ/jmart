@@ -2,7 +2,7 @@ package EmirMuhamadZaidJmartAK;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Store extends Recognizable //implements FileParser
+public class Store extends Serializable //implements FileParser
 {
     public static final String REGEX_PHONE = "^(\\d{9,12})$";
     public static final String REGEX_NAME = "^(^([A-Za-z]{4,20}).([A-Za-z]{0,20})$)$";

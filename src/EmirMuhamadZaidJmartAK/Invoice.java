@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.ArrayList;
 
 
-public abstract class Invoice extends Recognizable //implements FileParser
+public abstract class Invoice extends Serializable //implements FileParser
 {
     public Date date;
     public int buyerId;
@@ -31,19 +31,23 @@ public abstract class Invoice extends Recognizable //implements FileParser
         GOOD
     }
 
-    protected Invoice (int id, int buyerId, int productId){
+    protected Invoice (int id,  int productId){
         //super(id);
-        this.buyerId = buyerId;
+        this.id = id;
         this.productId = productId;
         this.complaintId = -1;
         //this.rating = Rating.NONE;
         this.date = new Date();
         //this.rating = Rating.NONE;
-        System.out.println(date.toString());
+        //System.out.println(date.toString());
         status = Status.WAITING_CONFIRMATION;
     }
 
     public abstract double getTotalPay();
+
+    public boolean read(String content) {
+        return false;
+    }
     
     public class Record {
         public Status status;

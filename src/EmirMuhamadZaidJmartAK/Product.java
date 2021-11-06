@@ -1,6 +1,8 @@
 package EmirMuhamadZaidJmartAK;
 
-public class Product extends Recognizable //implements FileParser
+
+
+public class Product extends Serializable //implements FileParser
 {
     public int accountId;
     public String content;

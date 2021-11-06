@@ -1,5 +1,6 @@
 package EmirMuhamadZaidJmartAK;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,9 +16,31 @@ public class jmart {
             public List<String> listOfStates;
         }
 
-        public static void main (String[] args)
-        {
-            System.out.println("Hello world");
+        public static void main (String[] args) {
+            System.out.println("account id:" + new Account(null, null, null, -1).id);
+            System.out.println("account id:" + new Account(null, null, null, -1).id);
+            System.out.println("account id:" + new Account(null, null, null, -1).id);
+
+            System.out.println("payment id:" + new Payment(-1, -1, -1, null).id);
+            System.out.println("payment id:" + new Payment(-1, -1, -1, null).id);
+            System.out.println("payment id:" + new Payment(-1, -1, -1, null).id);
+        }
+
+        public static List<Product> filterByPrice(List<Product> list, double minPrice,double maxPrice){
+            List<Product> result = new ArrayList<Product>();
+
+            for(Product product : list){
+                if (minPrice != 0.0 && product.price < minPrice){
+                    continue;
+                }
+                if (minPrice != 0.0 && product.price > maxPrice){
+                    continue;
+                }
+
+            }
+            return result;
+        }
+           /* System.out.println("Hello world");
             String filepath = "./json/city.json";
             Gson gson = new Gson();
             try {
@@ -33,7 +56,7 @@ public class jmart {
             {
                 e.printStackTrace();
             }
-        }
+        */
 
         public static Product createProduct()
         {
