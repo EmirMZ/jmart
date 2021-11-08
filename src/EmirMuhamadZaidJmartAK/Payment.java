@@ -7,11 +7,13 @@ public class Payment extends Invoice /*implements Transactor*/
     public Shipment shipment;
     
 
-    public Payment(int id, int productId, int productCount, Shipment shipment){
-        super(id,productId);
+    public Payment( int buyerId, int productId, int productCount, Shipment shipment){
+        super(buyerId,productId);
+        //this.buyerId = buyerId;
+       // this.id =productId;
         this.productCount =productCount;
         this.shipment = shipment;
-        this.productId = productId;
+        //this.productId = productId;
 
     }
 

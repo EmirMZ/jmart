@@ -29,6 +29,13 @@ public class Shipment implements FileParser
             this.bit = bit;
         }
     }
+    public Shipment(String address, int cost, byte plan, String receipt){
+        this.address = address;
+        this.shipmentCost = cost;
+        this.bit = plan;
+        this.receipt =receipt;
+
+    }
     
     public class MultiDuration{
         public byte bit;

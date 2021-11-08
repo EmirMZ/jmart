@@ -31,9 +31,10 @@ public abstract class Invoice extends Serializable //implements FileParser
         GOOD
     }
 
-    protected Invoice (int id,  int productId){
+
+    protected Invoice (int buyerId,  int productId){
         //super(id);
-        this.id = id;
+        this.buyerId = buyerId;
         this.productId = productId;
         this.complaintId = -1;
         //this.rating = Rating.NONE;
