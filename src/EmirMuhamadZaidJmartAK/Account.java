@@ -19,9 +19,10 @@ public class Account extends Serializable //implements FileParser
         this.password = password;
         this.balance =balance;
     }
-   
-    
-        public boolean validate(String email,String password){
+
+
+
+    public boolean validate(String email,String password){
         Pattern pattern = Pattern.compile(REGEX_EMAIL);
         Matcher matcher = pattern.matcher(email);
         boolean matchFound = matcher.find();
