@@ -12,7 +12,7 @@ public abstract class Invoice extends Serializable //implements FileParser
     public int complaintId;
     public static Rating rating;
     public static Status status;
-    public ArrayList<Record> history = new ArrayList<Record>();
+    //public ArrayList<Record> history = new ArrayList<Record>();
 
     public enum Status {
         WAITING_CONFIRMATION,
@@ -44,7 +44,7 @@ public abstract class Invoice extends Serializable //implements FileParser
         status = Status.WAITING_CONFIRMATION;
     }
 
-    public abstract double getTotalPay();
+    public abstract double getTotalPay(Product product);
 
     public boolean read(String content) {
         return false;

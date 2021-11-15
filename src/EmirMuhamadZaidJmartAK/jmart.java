@@ -14,7 +14,62 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
 public class jmart {
+    public static long DELIVERED_LIMIT_MS = 10;
+    public static long ON_DELIVERY_LIMIT_MS = 10;
+    public static long ON_PROGRESS_LIMIT_MS = 20;
+    public static long WAITING_CONF_LIMIT_MS = 10;
 
+
+    public static void main (String[] args) {
+        try {
+            JsonTable<Payment> table = new JsonTable<>(Payment.class,"./json/randomPaymentList.json");
+            ObjectPoolThread<Payment> paymentPool = new ObjectPoolThread<Payment>("Thread-PP", jmart::paymentTimekeeper);
+            paymentPool.start();
+            table.forEach(payment -> paymentPool.add(payment));
+            while (paymentPool.size() != 0);
+            paymentPool.exit();
+            while (paymentPool.isAlive());
+            System.out.println("Thread exit successfully");
+            Gson gson = new Gson();
+            table.forEach(payment -> {
+                String history = gson.toJson(payment.history);
+                System.out.println(history);
+            });
+        }
+        catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
+    public static boolean paymentTimekeeper(Payment payment){
+        long startTime = System.currentTimeMillis();
+        if((System.currentTimeMillis() - startTime > WAITING_CONF_LIMIT_MS) && payment.history.equals(Status.WAITING_CONFIRMATION)){
+            payment.history.add(new Payment.Record(Invoice.Status.FAILED, "ERROR"));
+        }
+        else if(System.currentTimeMillis() - startTime > ON_PROGRESS_LIMIT_MS && payment.history.equals(Status.ON_PROGRESS)) {
+            payment.history.add(new Payment.Record(Invoice.Status.FAILED, "FAILED"));
+        }
+        else if(System.currentTimeMillis() - startTime > ON_DELIVERY_LIMIT_MS && payment.history.equals(Status.ON_DELIVERY)) {
+            payment.history.add(new Payment.Record(Invoice.Status.ON_DELIVERY, "ON_DELIVERY"));
+        }
+        else if(System.currentTimeMillis() - startTime > DELIVERED_LIMIT_MS && payment.history.equals(Status.DELIVERED)) {
+            payment.history.add(new Payment.Record(Invoice.Status.FINISHED, "DELIVERED"));
+            return true;
+        }
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+//public class jmart {
+
+/*
     class Country {
     public String name;
         public int population;
@@ -34,7 +89,8 @@ public class jmart {
 
 
         try{
-            String filepath = "account.json";
+
+            String filepath = "/a/b/c/account.json";
 
             JsonTable<Account> tableAccount = new JsonTable<>(Account.class, filepath);
             tableAccount.add(new Account("name","email","password",0));
@@ -50,12 +106,15 @@ public class jmart {
             filteredByName.forEach(product -> System.out.println(product.name));
             List<Product> filteredById = filterByAccountId(list, 1, 0, 5);
             filteredById.forEach(product -> System.out.println(product.name));*/
-        }
+  //      }
+
+        /*
         catch (Throwable t){
             t.printStackTrace();
         }
-    }
+    }*/
 
+/*
     public static List<Product> read(String filepath) throws FileNotFoundException {
         Gson gson = new Gson();
         Type userListType = new TypeToken<ArrayList<Product>>() {
@@ -64,10 +123,10 @@ public class jmart {
         List<Product> returnList = gson.fromJson(br, userListType);
         return returnList;
     }
+*/
 
 
-
-
+/*
     public static List<Product> filterByPrice(List<Product> list, double minPrice, double maxPrice) {
         if (minPrice <= 0) {
             return Algorithm.<Product>collect(list, prod -> prod.price <= maxPrice);
@@ -87,11 +146,12 @@ public class jmart {
             }
         }
         return tempHasil;
-    }
+    }*/
 
     //private static List<Product> paginate(List<Product> list, int page, int pageSize, Predicate<Product> pred) {
     //    return list.stream().filter(i -> pred.predicate(i)).skip(page * pageSize).limit(pageSize).collect(Collectors.toList());
     //}
+    /*
     private static List<Product> paginate(List<Product> list, int page, int pageSize, Predicate<Product> pred) {
         int iteration = 0;
         int occurences = 0;
@@ -119,7 +179,7 @@ public class jmart {
     public static List<Product> filterByAccountId(List<Product> list, int accountId, int page, int pageSize) {
         Predicate<Product> predicate = i -> (i.accountId == accountId);
         return paginate(list, page, pageSize, predicate);
-    }
+    }*/
             /* System.out.println("Hello world");
             String filepath = "./json/city.json";
             Gson gson = new Gson();
@@ -137,7 +197,7 @@ public class jmart {
                 e.printStackTrace();
             }
         */
-
+/*
         public static Product createProduct()
         {
             return null;
@@ -150,7 +210,7 @@ public class jmart {
         public static Coupon createCoupun()
         {
             return null;
-        }
+        }*/
 
 
-}
+//}

@@ -1,8 +1,11 @@
 package EmirMuhamadZaidJmartAK;
-
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Payment extends Invoice /*implements Transactor*/
 {
+    List<Record> history = new ArrayList<Record>();
     public int productCount;
     public Shipment shipment;
     
@@ -16,11 +19,20 @@ public class Payment extends Invoice /*implements Transactor*/
         //this.productId = productId;
 
     }
+    public static class Record {
+        public Status status;
+        public Date date;
+        public String message;
+
+        public Record(Status status, String message) {
+            this.status = status;
+            this.message = message;
+            this.date = java.util.Calendar.getInstance().getTime();
+        }
+    }
 
 
-
-
-    public double getTotalPay(){
+    public double getTotalPay(Product product){
         return 0.0;
     }
 /*

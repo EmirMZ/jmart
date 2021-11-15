@@ -21,11 +21,20 @@ public class JsonTable<T> extends Vector<T> {
 
     public JsonTable(Class<T>clazz, String filepath) throws IOException {
         this.filepath = filepath;
-        @SuppressWarnings("unchecked")
-        Class<T[]> array = (Class<T[]>) Array.newInstance(clazz,0).getClass();
+        try{
+            @SuppressWarnings("unchecked")
+            Class<T[]> array = (Class<T[]>) Array.newInstance(clazz,0).getClass();
 
-        T[] result = JsonTable.readJson(array,this.filepath);
-        Collections.addAll(this,result);
+            T[] result = JsonTable.readJson(array,this.filepath);
+            Collections.addAll(this,result);
+        }catch(FileNotFoundException e){
+            File file = new File(filepath);
+            File parent = file.getParentFile();
+            parent.mkdirs();
+
+            file.createNewFile();
+        }
+
 
     }
 

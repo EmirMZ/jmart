@@ -7,7 +7,8 @@ package EmirMuhamadZaidJmartAK;
  * @author (your name here)
  * @version (version number or date here)
  */
+
 public enum Status
 {
-    WAITING_CONFIRMATION,CANCELLED,ON_PROGRESS,ON_DELIVERY,COMPLAINT,FINISHED,FAILED
+    WAITING_CONFIRMATION,CANCELLED,ON_PROGRESS,ON_DELIVERY,DELIVERED,COMPLAINT,FINISHED,FAILED
 }
