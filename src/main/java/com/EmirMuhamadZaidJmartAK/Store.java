@@ -12,7 +12,7 @@ public class Store extends Serializable //implements FileParser
     public String address;
     public String phoneNumber;
     
-    Store(int id, String name, String address, String phoneNumber){
+    public Store( String name, String address, String phoneNumber,int id){
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -29,7 +29,9 @@ public class Store extends Serializable //implements FileParser
    //     return false;
     //}
 
-    public String toString() {
+
+
+	public String toString() {
         return "name :" + this.name + "address :" + this.address +  "phone number :" + this.phoneNumber;
     }
     
