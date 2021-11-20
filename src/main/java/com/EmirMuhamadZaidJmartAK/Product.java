@@ -1,6 +1,6 @@
 package com.EmirMuhamadZaidJmartAK;
 
-
+import com.EmirMuhamadZaidJmartAK.dbjson.Serializable;
 
 public class Product extends Serializable //implements FileParser
 {

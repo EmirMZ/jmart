@@ -2,6 +2,8 @@ package com.EmirMuhamadZaidJmartAK;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.EmirMuhamadZaidJmartAK.dbjson.Serializable;
+
 public class Store extends Serializable //implements FileParser
 {
     public static final String REGEX_PHONE = "^(\\d{9,12})$";

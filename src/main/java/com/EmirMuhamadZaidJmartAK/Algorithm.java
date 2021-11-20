@@ -295,7 +295,7 @@ public class Algorithm {
     }
 
     public static <T extends Comparable<?super T>> T min (T first, T second, Comparator<? super T>comparator){
-        int res = ((Comparable<T>) first).compareTo(second);
+        int res = ((T) first).compareTo(second);
         return res == -1 ? second : first;
     }
 

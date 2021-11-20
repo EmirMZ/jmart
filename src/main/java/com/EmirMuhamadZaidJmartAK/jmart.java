@@ -12,12 +12,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.EmirMuhamadZaidJmartAK.dbjson.JsonDBEngine;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
 @SpringBootApplication
 public class jmart {
-	SpringApplication.run(Jmart.class, args);
+	
     public static long DELIVERED_LIMIT_MS = 10;
     public static long ON_DELIVERY_LIMIT_MS = 10;
     public static long ON_PROGRESS_LIMIT_MS = 20;
@@ -25,8 +26,15 @@ public class jmart {
 
 
     public static void main (String[] args) {
-        try {
-            JsonTable<Payment> table = new JsonTable<>(Payment.class,"./json/randomPaymentList.json");
+    	
+    	JsonDBEngine.Run(jmart.class);
+    	SpringApplication.run(jmart.class, args);
+    	Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
+    	
+    	
+    	
+    	/*try {
+            JsonTable<Payment> table = new JsonTable<>(Payment.class,"C:/Users/zocom/OneDrive/UI-DESKTOP-6NJSBHG/Data UI/Semester 3/OOP/praktikum/jmartintellij/json/randomPaymentList.json");
             ObjectPoolThread<Payment> paymentPool = new ObjectPoolThread<Payment>("Thread-PP", jmart::paymentTimekeeper);
             paymentPool.start();
             table.forEach(payment -> paymentPool.add(payment));
@@ -42,7 +50,7 @@ public class jmart {
         }
         catch (Throwable t) {
             t.printStackTrace();
-        }
+        }*/
     }
     public static boolean paymentTimekeeper(Payment payment){
         long startTime = System.currentTimeMillis();

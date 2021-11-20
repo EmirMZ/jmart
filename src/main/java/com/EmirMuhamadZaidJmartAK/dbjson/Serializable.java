@@ -1,4 +1,4 @@
-package com.EmirMuhamadZaidJmartAK;
+package com.EmirMuhamadZaidJmartAK.dbjson;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -3,6 +3,8 @@ package com.EmirMuhamadZaidJmartAK;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.EmirMuhamadZaidJmartAK.dbjson.Serializable;
+
 public class Complaint extends Serializable //implements FileParser
 {
     public Date date;
