@@ -5,62 +5,69 @@ import com.EmirMuhamadZaidJmartAK.ObjectPoolThread;
 import com.EmirMuhamadZaidJmartAK.Payment;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequestMapping("/payment")
-public class PaymentController implements BasicGetController<Payment> {
-
+public class PaymentController implements BasicGetController {
+    public static final long DELIVERED_LIMIT_MS = 100;
+    public static final long ON_DELIVERY_LIMIT_MS = 100;
+    public static final long ON_PROGRESS_LIMIT_MS = 100;
+    public static final long WAITING_CONF_LIMIT_MS = 100;
+    @JsonAutowired(value = Payment.class, filepath = "Payment.json")
     public static JsonTable<Payment> paymentTable;
-    public static ObjectPoolThread<Payment> poolThread;
-    public static final long DELIVERED_LIMIT_MS = 0;
-    public static final long ON_DELIVERIY_LIMIT_MS = 0;
-    public static final long ON_PROGRESS_LIMIT_MS = 0;
-    public static final long WAITING_CONF_LIMIT_MS = 0;
-
+    ObjectPoolThread<Payment> poolThread;
 
     @Override
     public JsonTable<Payment> getJsonTable() {
-        
-    	
-    	return null;
+        return paymentTable;
     }
 
-    @PostMapping
-    ("/{id}/accept")
-    public boolean accept(int id) {
-        
-    	
-    	return false;
+    @PostMapping("/create")
+    @ResponseBody Payment create
+            (
+                    @RequestParam int buyerId,
+                    @RequestParam int productId,
+                    @RequestParam int productCount,
+                    @RequestParam String shipmentAddress,
+                    @RequestParam byte shipmnetPlan
+            )
+    {
+        return null;
     }
 
-    @PostMapping
-    ("/{id}/cancel")
-    public boolean cancel(int id) {
-        
-    	
-    	return false;
+    @PostMapping(" /{id}/accept ")
+    @ResponseBody boolean accept
+            (
+                    @RequestParam int id
+            )
+    {
+        return false;
     }
 
-    @PostMapping
-    ("/create")
-    public Payment create(int buyerId, int productId, int productCount, String shipmentAddress, byte shipmentPlan) {
-        
-    	
-    	return null;
+    @PostMapping(" /{id}/cancel ")
+    @ResponseBody boolean cancel
+            (
+                    @RequestParam int id
+            )
+    {
+        return false;
     }
 
-    @PostMapping
-    ("/submit")
-    public boolean submit(int id, String receipt) {
-        
-    	
-    	return false;
+    @PostMapping(" /{id}/submit ")
+    @ResponseBody boolean submit
+            (
+                    @RequestParam int id,
+                    @RequestParam String receipt
+            )
+    {
+        return false;
     }
 
-    private static boolean timekeeper(Payment payment) {
-        
-    	
-    	return false;
+    private static boolean timekeeper(Payment payment){
+        return false;
     }
 }

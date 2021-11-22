@@ -384,6 +384,70 @@ public class Algorithm {
         return list;
 
     }
+    
+    public static <T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T> pred) {
+        int iterator = 0;
+        int counter = 0;
+        int startId = page * pageSize;
+        List<T> pageList = new ArrayList<>(pageSize);
+
+        for (; iterator < array.length && counter < startId; ++iterator) {
+            if (pred.predicate(array[iterator])) {
+                ++counter;
+            }
+        }
+        for (int i = 0; i < array.length && pageList.size() < pageSize; ++i) {
+            if (pred.predicate(array[i])) {
+                pageList.add(array[i]);
+            }
+        }
+        return pageList;
+    }
+
+    public static <T> List<T> paginate(Iterable<T> iterable, int page, int pageSize, Predicate<T> pred) {
+        int iterator = 0;
+        int counter = 0;
+        int startId = page * pageSize;
+        List<T> pageList = new ArrayList<>(pageSize);
+
+        List<T> array = new ArrayList<T>();
+
+        iterable.forEach(array::add);
+
+        for (; iterator < array.size() && counter < startId; ++iterator) {
+            if (pred.predicate(array.get(iterator))) {
+                ++counter;
+            }
+        }
+        for (int i = 0; i < array.size() && pageList.size() < pageSize; ++i) {
+            if (pred.predicate(array.get(iterator))) {
+                pageList.add(array.get(iterator));
+            }
+        }
+        return pageList;
+    }
+    public static <T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred) {
+    	int iterate = 0;
+        int counter = 0;
+        int startId = page * pageSize;
+        List<T> pageList = new ArrayList<>(pageSize);
+
+        List<T> array = new ArrayList<T>();
+
+        iterator.forEachRemaining(array::add);
+
+        for (; iterate < array.size() && counter < startId; ++iterate) {
+            if (pred.predicate(array.get(iterate))) {
+                ++counter;
+            }
+        }
+        for (int i = 0; i < array.size() && pageList.size() < pageSize; ++i) {
+            if (pred.predicate(array.get(iterate))) {
+                pageList.add(array.get(iterate));
+            }
+        }
+        return pageList;
+    }
 
 
 
