@@ -12,6 +12,12 @@ repositories {
 	mavenCentral()
 }
 
+jar{
+		manifest{
+			attributes "Main-Class": "Jmart"
+		}
+}
+
 dependencies {
 	implementation 'com.google.code.gson:gson:2.8.6'
 	implementation 'org.springframework.boot:spring-boot-starter-web'

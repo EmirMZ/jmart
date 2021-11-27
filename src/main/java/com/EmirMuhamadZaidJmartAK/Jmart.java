@@ -1,23 +1,11 @@
 package com.EmirMuhamadZaidJmartAK;
-import java.io.FileNotFoundException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import com.EmirMuhamadZaidJmartAK.dbjson.JsonDBEngine;
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 
 @SpringBootApplication
-public class jmart {
+public class Jmart {
 	
     public static long DELIVERED_LIMIT_MS = 10;
     public static long ON_DELIVERY_LIMIT_MS = 10;
@@ -27,8 +15,8 @@ public class jmart {
 
     public static void main (String[] args) {
     	
-    	JsonDBEngine.Run(jmart.class);
-    	SpringApplication.run(jmart.class, args);
+    	JsonDBEngine.Run(Jmart.class);
+    	SpringApplication.run(Jmart.class, args);
     	Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
     	
     	
