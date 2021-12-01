@@ -33,7 +33,7 @@ public class PaymentController implements BasicGetController {
                     @RequestParam int productId,
                     @RequestParam int productCount,
                     @RequestParam String shipmentAddress,
-                    @RequestParam byte shipmnetPlan
+                    @RequestParam byte shipmentPlan
             )
     {
         return null;
