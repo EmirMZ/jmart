@@ -2,43 +2,30 @@ package com.EmirMuhamadZaidJmartAK;
 
 import com.EmirMuhamadZaidJmartAK.dbjson.Serializable;
 
-public class Product extends Serializable //implements FileParser
+
+public class Product extends Serializable
 {
     public int accountId;
-    public String content;
-    public String name;
-    public double discount;
-    public int weight ;
-    public boolean conditionUsed;
-    //public PriceTag priceTag;
-    public double price;
     public ProductCategory category;
-    //public ProductRating rating;
-    //public int storeid;
+    public boolean conditionUsed;
+    public double discount;
+    public String name;
+    public double price;
     public byte shipmentPlans;
-    //public Shipment.MultiDuration multiDuration;
-    
-    public Product(int accountId, /*int storeId,*/ String name, int weight, boolean conditionUsed, double price, double discount, ProductCategory category, byte shipmentPlans){
+    public int weight;
 
-        //super(id);
+    public Product(int accountId, String name, int weight, boolean conditionUsed, double price, double discount, ProductCategory category, byte shipmentPlans) {
         this.accountId = accountId;
-        this.name = name  ;
+        this.name = name;
         this.weight = weight;
         this.conditionUsed = conditionUsed;
         this.price = price;
         this.discount = discount;
-        this.shipmentPlans = shipmentPlans;
         this.category = category;
-        //this.rating = rating;
-        //this.storeid = storeId;
+        this.shipmentPlans = shipmentPlans;
     }
-    
-    /*@Override
-    public boolean read (String content){
-        return false;
-    }
-    */
+
     public String toString(){
-        return this.accountId + this.name + this.weight + this.conditionUsed + this.price + this.category + this.shipmentPlans;
+        return this.accountId + this.name + this.weight + this.conditionUsed + this.price + this.discount + this.category + this.shipmentPlans;
     }
 }
