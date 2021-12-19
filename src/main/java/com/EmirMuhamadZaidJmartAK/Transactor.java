@@ -1,7 +1,9 @@
 package com.EmirMuhamadZaidJmartAK;
 
 
-
+/**
+ * Transactor Interface
+ */
 
 public interface Transactor
 {

@@ -15,6 +15,11 @@ import javax.websocket.server.PathParam;
 import java.util.List;
 
 
+/**
+ * PaymentController Class
+ * GET and POST request is handled here for /payment
+ */
+
 @RestController
 @RequestMapping("/payment")
 public class PaymentController implements BasicGetController<Payment> {
@@ -31,6 +36,15 @@ public class PaymentController implements BasicGetController<Payment> {
         return paymentTable;
     }
 
+    /**
+     * create a new payment to purchase a product
+     * @param buyerId
+     * @param productId
+     * @param productCount
+     * @param shipmentAddress
+     * @param shipmentPlan
+     * @return
+     */
     @PostMapping("/create")
     @ResponseBody Payment create
             (
@@ -58,6 +72,12 @@ public class PaymentController implements BasicGetController<Payment> {
         }
     }
 
+    /**
+     * accept after requesting a payment to processing and packaging
+     *
+     * @param id
+     * @return
+     */
     @PostMapping("/{id}/accept")
     public boolean accept
             (
@@ -75,6 +95,12 @@ public class PaymentController implements BasicGetController<Payment> {
         return false;
     }
 
+    /**
+     * request a cancellation for a certain payment id
+     * @param id
+     * @return
+     */
+
     @PostMapping(" /{id}/cancel ")
     public boolean cancel(
             @PathVariable int id
@@ -91,6 +117,12 @@ public class PaymentController implements BasicGetController<Payment> {
         return false;
     }
 
+    /**
+     * submit the request for delivery
+     * @param id
+     * @param receipt
+     * @return
+     */
     @PostMapping(" /{id}/submit ")
     @ResponseBody boolean submit
             (
@@ -112,11 +144,22 @@ public class PaymentController implements BasicGetController<Payment> {
         return false;
     }
 
-
+    /**
+     * method to get Payment from a certain ID
+     * @param id
+     * @return
+     */
     @Override
     public Payment getById(int id) {
         return BasicGetController.super.getById(id);
     }
+
+    /**
+     * request an entire page for payments
+     * @param page
+     * @param pageSize
+     * @return
+     */
 
     @Override
     public List<Payment> getPage(int page, int pageSize) {

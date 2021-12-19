@@ -2,6 +2,10 @@ package com.EmirMuhamadZaidJmartAK;
 
 import com.EmirMuhamadZaidJmartAK.dbjson.Serializable;
 
+/***
+ * Class product with accountId, name,  weight,  conditionUsed, price,  discount,  category,  shipmentPlans as arguments
+ *
+ */
 
 public class Product extends Serializable
 {

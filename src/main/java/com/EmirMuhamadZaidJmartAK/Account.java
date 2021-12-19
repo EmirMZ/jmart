@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Write a description of class Store here.
+ * Account Class. so there is a format for every account to follow
  *
  * @author (your name)
  * @version (a version number or a date)
@@ -21,6 +21,13 @@ public class Account extends Serializable
     public String email, name, password;
     public Store store;
 
+    /**
+     * Account Constructor
+     * @param name
+     * @param email
+     * @param password
+     * @param balance
+     */
     public Account(String name, String email, String password, double balance){
         this.name = name;
         this.email = email;
@@ -28,6 +35,10 @@ public class Account extends Serializable
         this.balance = balance;
     }
 
+    /**
+     * Validate user entry using the REGEX_EMAIL and REGEX_Password variable( it uses regex)
+     * @return
+     */
     public boolean validate(){
         Pattern patternEmail = Pattern.compile(REGEX_EMAIL);
         Matcher matcherEmail = patternEmail.matcher(email);

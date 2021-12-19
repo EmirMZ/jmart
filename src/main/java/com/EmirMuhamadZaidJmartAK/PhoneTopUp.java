@@ -1,5 +1,9 @@
 package com.EmirMuhamadZaidJmartAK;
 
+/**
+ * Phone top up
+ * implementation not finished
+ */
 public class PhoneTopUp extends Invoice{
     public String phoneNumber;
     public Status status;

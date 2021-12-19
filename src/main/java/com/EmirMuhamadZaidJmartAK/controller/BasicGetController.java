@@ -9,6 +9,12 @@ import com.EmirMuhamadZaidJmartAK.dbjson.JsonTable;
 
 import java.util.List;
 
+/**
+ * BasicGetController
+ * basic implementation for multiple uses in Controller
+ * @param <T>
+ */
+
 @RestController
 public interface BasicGetController <T extends Serializable> {
 	@GetMapping("/{id}")

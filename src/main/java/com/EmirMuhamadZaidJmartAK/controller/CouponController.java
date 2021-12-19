@@ -14,6 +14,11 @@ import com.EmirMuhamadZaidJmartAK.Product;
 import com.EmirMuhamadZaidJmartAK.dbjson.JsonAutowired;
 import com.EmirMuhamadZaidJmartAK.dbjson.JsonTable;
 
+/**
+ * CouponController class
+ * GET and POST request is handled here for /coupon
+ */
+
 @RestController
 @RequestMapping("/coupon")
 public class CouponController implements BasicGetController<Coupon>

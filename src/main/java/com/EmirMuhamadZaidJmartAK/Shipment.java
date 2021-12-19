@@ -5,7 +5,9 @@ import java.util.Calendar;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
+/**
+ * Shipment class, for Shipping types and whatnot
+ */
 public class Shipment implements FileParser
 {
     public String address; 
@@ -14,7 +16,10 @@ public class Shipment implements FileParser
     public int shipmentCost;
     public static final SimpleDateFormat ESTIMATION_FORMAT = new SimpleDateFormat("'Date Format'E, MM/dd/yyyy");
     private byte bit;
-    
+
+    /**
+     * Duration class that uses bytecode
+     */
     public static class Duration{
         
         
@@ -29,6 +34,14 @@ public class Shipment implements FileParser
             this.bit = bit;
         }
     }
+
+    /**
+     * Shipment constructor
+     * @param address
+     * @param cost
+     * @param plan
+     * @param receipt
+     */
     public Shipment(String address, int cost, byte plan, String receipt){
         this.address = address;
         this.shipmentCost = cost;
@@ -36,7 +49,11 @@ public class Shipment implements FileParser
         this.receipt =receipt;
 
     }
-    
+
+    /**
+     * Multi duration class
+     *
+     */
     public class MultiDuration{
         public byte bit;
         public MultiDuration(byte ... args){
@@ -44,7 +61,12 @@ public class Shipment implements FileParser
                 this.bit = (byte)(this.bit | i);
             }
         }
-        
+
+        /**
+         * return if duration the same
+         * @param reference
+         * @return
+         */
         public boolean isDuration(Duration reference){
             if ((reference.bit&this.bit) != 0){
                 return true;
@@ -53,6 +75,12 @@ public class Shipment implements FileParser
             }
         }
     }
+
+    /**
+     * gives rough estimation for arrival of the product
+     * @param reference
+     * @return
+     */
     public String getEstimatedArrival(Date reference){
             Calendar temp = Calendar.getInstance();
                 if(this.bit == 1<<0|| this.bit == 1<<1){
@@ -71,8 +99,12 @@ public class Shipment implements FileParser
                     return ESTIMATION_FORMAT.format(temp);
                 }
         }
-    
-    
+
+    /**
+     * read string, and return false
+     * @param content
+     * @return
+     */
     @Override
     public boolean read(String content){
         return false;

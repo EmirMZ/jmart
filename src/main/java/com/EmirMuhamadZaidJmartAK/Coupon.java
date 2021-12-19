@@ -2,6 +2,10 @@ package com.EmirMuhamadZaidJmartAK;
 
 import com.EmirMuhamadZaidJmartAK.dbjson.Serializable;
 
+
+/**
+ * Coupon class for individual coupon objects
+ */
 public class Coupon extends Serializable
 {
     private static boolean used;
@@ -11,6 +15,14 @@ public class Coupon extends Serializable
     public final String name;
     public final Type type;
 
+    /**
+     * Coupon constructor
+     * @param name
+     * @param code
+     * @param type
+     * @param cut
+     * @param minimum
+     */
     public Coupon(String name, int code, Type type, double cut, double minimum){
         this.name = name;
         this.code = code;
@@ -20,6 +32,12 @@ public class Coupon extends Serializable
         used = false;
     }
 
+    /**
+     * apply a coupon to a product, returns the discounted product
+     * @param price
+     * @param discount
+     * @return
+     */
     public double apply(double price, double discount)
     {
         used = true;
@@ -36,11 +54,21 @@ public class Coupon extends Serializable
         return 0.0;
     }
 
+    /**
+     * check if coupon is valid and not below the minimum threshold
+     * @param price
+     * @param discount
+     * @return
+     */
     public boolean canApply(double price, double discount)
     {
         return !used && !(Treasury.getAdjustedPrice(price, discount) < minimum);
     }
 
+    /**
+     * return used status
+     * @return
+     */
     public boolean isUsed(){
         return this.used;
     }

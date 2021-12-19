@@ -6,8 +6,10 @@ import com.EmirMuhamadZaidJmartAK.dbjson.Serializable;
 
 import java.util.ArrayList;
 
-
-public abstract class Invoice extends Serializable //implements FileParser
+/**
+ * Invoice class for invoice needs
+ */
+public abstract class Invoice extends Serializable
 {
     public Date date;
     public int buyerId;
@@ -17,6 +19,9 @@ public abstract class Invoice extends Serializable //implements FileParser
     public static Status status;
     //public ArrayList<Record> history = new ArrayList<Record>();
 
+    /**
+     * Enumeration for order status
+     */
     public enum Status {
         WAITING_CONFIRMATION,
         CANCELLED,
@@ -27,6 +32,9 @@ public abstract class Invoice extends Serializable //implements FileParser
         FAILED
     }
 
+    /**
+     * Enumeration for rating
+     */
     public enum Rating{
         NONE,
         BAD,
@@ -34,7 +42,11 @@ public abstract class Invoice extends Serializable //implements FileParser
         GOOD
     }
 
-
+    /**
+     * Invoice constructor
+     * @param buyerId
+     * @param productId
+     */
     protected Invoice(int buyerId, int productId) {
         this.buyerId = buyerId;
         this.productId = productId;
@@ -43,12 +55,25 @@ public abstract class Invoice extends Serializable //implements FileParser
         this.rating = Rating.NONE;
     }
 
+    /**
+     * get total payment
+     * @param product
+     * @return
+     */
     public abstract double getTotalPay(Product product);
 
+    /**
+     * read a string, not used
+     * @param content
+     * @return
+     */
     public boolean read(String content) {
         return false;
     }
 
+    /**
+     * Record class, not used
+     */
     public class Record {
         public Status status;
         public Date date;

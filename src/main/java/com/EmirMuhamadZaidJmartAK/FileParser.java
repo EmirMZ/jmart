@@ -2,7 +2,7 @@ package com.EmirMuhamadZaidJmartAK;
 
 
 /**
- * Write aa description of interface FileParser here.
+ * File parser interface
  *w
  * @author (your name)
  * @version (a version number or a date)

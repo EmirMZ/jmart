@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
+/**
+ * ProductController Class
+ * GET and POST request is handled here for /product
+ */
+
 @RestController
 @RequestMapping("/product")
 public class ProductController implements BasicGetController<Product>
@@ -26,6 +32,15 @@ public class ProductController implements BasicGetController<Product>
         return productTable;
     }
 
+
+    /**
+     * getProductByStore
+     * @param id
+     * @param page
+     * @param pageSize
+     * @return
+     */
+
     @GetMapping("/{id}/store")
     @ResponseBody
     List<Product> getProductByStore
@@ -37,6 +52,19 @@ public class ProductController implements BasicGetController<Product>
     {
         return Algorithm.paginate(productTable, page, pageSize,pred->pred.accountId == id);
     }
+
+    /**
+     * create a product with the provided parameters
+     * @param accountId
+     * @param name
+     * @param weight
+     * @param conditionUsed
+     * @param price
+     * @param discount
+     * @param category
+     * @param shipmentPlans
+     * @return
+     */
 
     @PostMapping("/create")
     @ResponseBody
@@ -62,6 +90,17 @@ public class ProductController implements BasicGetController<Product>
         return null;
     }
 
+    /**
+     * filter products with the provided parameters
+     * @param page
+     * @param pageSize
+     * @param accountId
+     * @param search
+     * @param minPrice
+     * @param maxPrice
+     * @param category
+     * @return
+     */
     @GetMapping("/getFiltered")
     @ResponseBody
     List<Product> getProductByFilter

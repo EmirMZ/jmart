@@ -15,6 +15,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.regex.Pattern;
 
+/**
+ * AccountController class
+ * GET and POST request is handled here for /account
+ */
+
+
 @RestController
 @RequestMapping("/account")
 public class AccountController implements BasicGetController<Account>{
@@ -25,6 +31,12 @@ public class AccountController implements BasicGetController<Account>{
     @JsonAutowired(value = Account.class,filepath = "akun.json")
     public static JsonTable<Account> accountTable;
 
+    /**
+     * login and getting balance for app
+     * @param email
+     * @param password
+     * @return
+     */
     @PostMapping("/login")
     Account login
             (
@@ -53,6 +65,13 @@ public class AccountController implements BasicGetController<Account>{
         return null;
     }
 
+    /**
+     * register for new account
+     * @param name
+     * @param email
+     * @param password
+     * @return
+     */
     @PostMapping("/register")
     Account register
             (
@@ -83,6 +102,15 @@ public class AccountController implements BasicGetController<Account>{
         }
         return null;
     }
+
+    /**
+     * register new Stores, not implemented yet in front end
+     * @param id
+     * @param name
+     * @param address
+     * @param phoneNumber
+     * @return
+     */
     @PostMapping("/{id}/registerStore")
     Store register
             (
@@ -100,6 +128,13 @@ public class AccountController implements BasicGetController<Account>{
         }
         return null;
     }
+
+    /**
+     * topUp for refilling money
+     * @param id
+     * @param balance
+     * @return
+     */
 
     @PostMapping("/{id}/topUp")
     boolean topUp
@@ -120,6 +155,11 @@ public class AccountController implements BasicGetController<Account>{
         return false;
     }
 
+    /**
+     * check balance for refreshing values
+     * @param id
+     * @return
+     */
     @PostMapping("/{id}/checkbalance")
     double checkBalance
             (

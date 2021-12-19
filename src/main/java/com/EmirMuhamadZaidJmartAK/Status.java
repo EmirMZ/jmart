@@ -2,9 +2,9 @@ package com.EmirMuhamadZaidJmartAK;
 
 
 /**
- * Enumeration class status - write a description of the enum class here
+ * Enumeration class status
  *
- * @author (your name here)
+ * @author Emir Muhamad zaid
  * @version (version number or date here)
  */
 

@@ -3,26 +3,52 @@ package com.EmirMuhamadZaidJmartAK;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Algorithm class for performing calculation on objects
+ */
+
 public class Algorithm {
     private Algorithm() {
 
     }
 
+    /**
+     * count object with array
+     * @param array
+     * @param value
+     * @param <T>
+     * @return
+     */
     public static <T> int count(T[] array, T value) {
         final Iterator<T> var = Arrays.stream(array).iterator();
         return count(var, value);
     }
 
+    /**
+     * count object that is iterable
+     * @param iterable
+     * @param value
+     * @param <T>
+     * @return
+     */
     public static <T> int count(Iterable<T> iterable, T value) {
         final Iterator <T> var = iterable.iterator();
         return count(var, value);
     }
 
+    /**
+     * count object with reference method object
+     * @param iterator
+     * @param value
+     * @param <T>
+     * @return
+     */
     public static <T> int count(Iterator<T> iterator, T value) {
         final Predicate <T> var = value::equals;
         return count(iterator, var);
     }
 
+/*
     public static <T> int count(T[] array, Predicate<T> pred) {
         final Iterator<T> var = Arrays.stream(array).iterator();
         return count(var, pred);
@@ -32,21 +58,49 @@ public class Algorithm {
         final Iterator<T> var = iterable.iterator();
         return count(var, pred);
     }
+*/
 
+    /**
+     * count method with recursive function
+     * @param iterator
+     * @param pred
+     * @param <T>
+     * @return
+     */
     public static <T> int count(Iterator<T> iterator, Predicate<T> pred) {
         return count(iterator, pred);
     }
 
+    /**
+     * exist method with recursive function
+     * @param array
+     * @param value
+     * @param <T>
+     * @return
+     */
     public static <T> boolean exists(T[] array, T value) {
         final Iterator<T> var = Arrays.stream(array).iterator();
         return exists(var, value);
     }
-
+    /**
+     * exist method with recursive function
+     * @param iterable
+     * @param value
+     * @param <T>
+     * @return
+     */
     public static <T> boolean exists(Iterable<T> iterable, T value) {
         final Iterator<T> var = iterable.iterator();
         return exists(var, value);
     }
 
+    /**
+     * exist method with recursive function
+     * @param iterator
+     * @param value
+     * @param <T>
+     * @return
+     */
     public static <T> boolean exists(Iterator<T> iterator, T value) {
         final Predicate <T> var = value::equals;
         return exists(iterator, var);
@@ -66,6 +120,7 @@ public class Algorithm {
         return exists(iterator, pred);
     }
 
+/*
     public static <T> T find(T[] array, T value) {
         for(T i : array){
             if(i == value){
@@ -101,6 +156,7 @@ public class Algorithm {
         }
         return null;
     }
+*/
 
     public static <T> T find(Iterable<T> iterable, Predicate<T> pred) {
         for(T i : iterable){
@@ -110,7 +166,7 @@ public class Algorithm {
         }
         return null;
     }
-
+/*
     public static <T> T find(Iterator<T> iterator, Predicate<T> pred) {
         while (iterator.hasNext()){
             if(pred.predicate(iterator.next())){
@@ -309,8 +365,8 @@ public class Algorithm {
         }
         return minimum;
     }
-
-    public static<T> List<T> collect(T[] array, T value) {
+*/
+/*    public static<T> List<T> collect(T[] array, T value) {
         List<T> list = new ArrayList<T>();
         for (T each: array) {
             if(each.equals(value)) {
@@ -371,12 +427,21 @@ public class Algorithm {
             }
         }
         return list;
-    }
+    }*/
 
     public static <T> List<T> paginate(T[] array, int page, int pageSize, Predicate<T> pred){
         return Arrays.stream(array).filter(pred::predicate).skip(pageSize*page).limit(pageSize).collect(Collectors.toList());
     }
 
+    /**
+     * return a list of page
+     * @param iterable
+     * @param page
+     * @param pageSize
+     * @param pred
+     * @param <T>
+     * @return
+     */
     public static <T> List<T> paginate(Iterable<T> iterable, int page, int pageSize, Predicate<T> pred){
         List<T> list = new ArrayList<T>();
         int counter = 0, counterPrint = 0;
@@ -396,6 +461,15 @@ public class Algorithm {
         return list;
     }
 
+    /**
+     * paginate with Iterator as argument
+     * @param iterator
+     * @param page
+     * @param pageSize
+     * @param pred
+     * @param <T>
+     * @return
+     */
     public static <T> List<T> paginate(Iterator<T> iterator, int page, int pageSize, Predicate<T> pred) {
         int iteration = 0;
         int occurences = 0;

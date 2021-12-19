@@ -4,6 +4,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.EmirMuhamadZaidJmartAK.dbjson.JsonDBEngine;
 
+/**
+ * JMART BACKEND
+ * A program to handle backend request for the very famous application, Jmart
+ * provides account info, ordering and invoice.
+ * well, depends on the front end for most of that stuff
+ * Main program uses Springboot
+ */
 @SpringBootApplication
 public class Jmart {
 	
@@ -12,7 +19,10 @@ public class Jmart {
     public static long ON_PROGRESS_LIMIT_MS = 20;
     public static long WAITING_CONF_LIMIT_MS = 10;
 
-
+    /**
+     * main method, for starting up spring and JsonDBEngine
+     * @param args
+     */
     public static void main (String[] args) {
     	
     	JsonDBEngine.Run(Jmart.class);
@@ -20,26 +30,14 @@ public class Jmart {
     	Runtime.getRuntime().addShutdownHook(new Thread(() -> JsonDBEngine.join()));
     	
     	
-    	
-    	/*try {
-            JsonTable<Payment> table = new JsonTable<>(Payment.class,"C:/Users/zocom/OneDrive/UI-DESKTOP-6NJSBHG/Data UI/Semester 3/OOP/praktikum/jmartintellij/json/randomPaymentList.json");
-            ObjectPoolThread<Payment> paymentPool = new ObjectPoolThread<Payment>("Thread-PP", jmart::paymentTimekeeper);
-            paymentPool.start();
-            table.forEach(payment -> paymentPool.add(payment));
-            while (paymentPool.size() != 0);
-            paymentPool.exit();
-            while (paymentPool.isAlive());
-            System.out.println("Thread exit successfully");
-            Gson gson = new Gson();
-            table.forEach(payment -> {
-                String history = gson.toJson(payment.history);
-                System.out.println(history);
-            });
-        }
-        catch (Throwable t) {
-            t.printStackTrace();
-        }*/
+
     }
+
+    /**
+     * paymentTimeKeeper to cycle invoice status
+     * @param payment
+     * @return
+     */
     public static boolean paymentTimekeeper(Payment payment){
         long startTime = System.currentTimeMillis();
         if((System.currentTimeMillis() - startTime > WAITING_CONF_LIMIT_MS) && payment.history.equals(Status.WAITING_CONFIRMATION)){
