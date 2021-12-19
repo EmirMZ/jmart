@@ -20,9 +20,9 @@ public abstract class Invoice extends Serializable //implements FileParser
     public enum Status {
         WAITING_CONFIRMATION,
         CANCELLED,
-        ON_PROGRES,
+        ON_PROGRESS,
         ON_DELIVERY,
-        COMPLAYINT,
+        COMPLAINT,
         FINISHED,
         FAILED
     }
@@ -35,16 +35,12 @@ public abstract class Invoice extends Serializable //implements FileParser
     }
 
 
-    protected Invoice (int buyerId,  int productId){
-        //super(id);
+    protected Invoice(int buyerId, int productId) {
         this.buyerId = buyerId;
         this.productId = productId;
+        date = java.util.Calendar.getInstance().getTime();
         this.complaintId = -1;
-        //this.rating = Rating.NONE;
-        this.date = new Date();
-        //this.rating = Rating.NONE;
-        //System.out.println(date.toString());
-        status = Status.WAITING_CONFIRMATION;
+        this.rating = Rating.NONE;
     }
 
     public abstract double getTotalPay(Product product);
@@ -52,13 +48,13 @@ public abstract class Invoice extends Serializable //implements FileParser
     public boolean read(String content) {
         return false;
     }
-    
+
     public class Record {
         public Status status;
         public Date date;
         public String message;
     }
-    
+
    // @Override
     //public boolean read (String content){
       //  return false;

@@ -419,4 +419,3 @@ public class Algorithm {
         return pageList;
     }
 }
-

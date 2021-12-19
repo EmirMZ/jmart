@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Payment extends Invoice /*implements Transactor*/
 {
-    List<Record> history = new ArrayList<Record>();
+    public List<Record> history = new ArrayList<Record>();
     public int productCount;
     public Shipment shipment;
     
@@ -33,7 +33,7 @@ public class Payment extends Invoice /*implements Transactor*/
 
 
     public double getTotalPay(Product product){
-        return 0.0;
+        return (product.price*this.productCount)*(product.discount/100);
     }
 /*
     @Override

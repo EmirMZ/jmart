@@ -8,6 +8,8 @@ import com.EmirMuhamadZaidJmartAK.dbjson.Serializable;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -79,8 +81,6 @@ public class AccountController implements BasicGetController<Account>{
             accountTable.add(account);
             return account;
         }
-
-
         return null;
     }
     @PostMapping("/{id}/registerStore")
@@ -108,13 +108,32 @@ public class AccountController implements BasicGetController<Account>{
                     @RequestParam double balance
             )
     {
+        BigDecimal bd = new BigDecimal(String.valueOf(balance));
+        BigDecimal roundedBalance = bd.setScale(3, RoundingMode.FLOOR);
+
         for(Account data : accountTable){
             if(data.id == id) {
-                data.balance += balance;
+                data.balance += roundedBalance.doubleValue();
                 return true;
             }
         }
         return false;
+    }
+
+    @PostMapping("/{id}/checkbalance")
+    double checkBalance
+            (
+                    @RequestParam int id
+            )
+    {
+
+
+        for(Account data : accountTable){
+            if(data.id == id) {
+                return data.balance;
+            }
+        }
+        return -100;
     }
 
     @Override
